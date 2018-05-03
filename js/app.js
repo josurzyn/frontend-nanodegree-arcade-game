@@ -18,7 +18,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = (this.x + this.speed) * dt;
+    if (this.x < 505) {
+      this.x = (this.x + this.speed);
+    } else {
+      this.x = -100;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -54,8 +58,15 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+const bug1 = new Enemy(-100, 55, 3);
+//const bug2 = new Enemy(0, 0, 2);
+//const bug3 = new Enemy(0, 0, 3);
+//const bug4 = new Enemy(0, 0, 4);
+//const bug5 = new Enemy(0, 0, 5);
 
+const allEnemies = [bug1];
 
+const player =  new Player(202, 375);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
