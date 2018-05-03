@@ -23,8 +23,18 @@ Enemy.prototype.update = function(dt) {
     } else {
       this.x = -100;
     }
+    collision();
 };
 
+function collision() {
+  allEnemies.forEach(function(bug){
+    if (player.y == bug.y && bug.x > (player.x - 40) && bug.x < (player.x + 40)) {
+        player.x = 202;
+        player.y = 375;
+    }
+  })
+
+}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -71,12 +81,12 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const bug1 = new Enemy(-100, 55, 3);
-//const bug2 = new Enemy(0, 0, 2);
-//const bug3 = new Enemy(0, 0, 3);
-//const bug4 = new Enemy(0, 0, 4);
-//const bug5 = new Enemy(0, 0, 5);
+const bug2 = new Enemy(-100, 135, 2);
+const bug3 = new Enemy(-100, 215, 3);
+const bug4 = new Enemy(-100, 135, 4);
+const bug5 = new Enemy(-100, 55, 5);
 
-const allEnemies = [bug1];
+const allEnemies = [bug1, bug2, bug3, bug4, bug5];
 
 const player =  new Player(202, 375);
 
