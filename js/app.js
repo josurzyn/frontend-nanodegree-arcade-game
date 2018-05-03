@@ -30,6 +30,26 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+//Player as ES6 Class
+class Player {
+  constructor(x, y) {
+    this.sprite = 'images/char-boy.png';
+    this.x = x;
+    this.y = y;
+  }
+
+  update(dt) {
+    //add update method
+  }
+
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+
+  handleInput() {
+    //handleInput method
+  }
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
