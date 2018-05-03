@@ -25,6 +25,7 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
+
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -50,8 +51,19 @@ class Player {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
-  handleInput() {
-    //handleInput method
+  handleInput(allowedKeys) {
+    if (allowedKeys == 'left' && player.x > 0) {
+      player.x -= 101;
+    }
+    if (allowedKeys == 'up' && player.y > 0) {
+      player.y -= 80;
+    }
+    if (allowedKeys == 'right' && player.x < 404) {
+      player.x += 101;
+    }
+    if (allowedKeys == 'down' && player.y < 375) {
+      player.y += 80;
+    }
   }
 }
 
