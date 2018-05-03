@@ -21,14 +21,14 @@ Enemy.prototype.update = function(dt) {
     if (this.x < 505) {
       this.x = (this.x + this.speed);
     } else {
-      this.x = -100;
+      this.x = -200;
     }
     collision();
 };
 
 function collision() {
   allEnemies.forEach(function(bug){
-    if (player.y == bug.y && bug.x > (player.x - 40) && bug.x < (player.x + 40)) {
+    if (player.y == bug.y && bug.x > (player.x - 50) && bug.x < (player.x + 50)) {
         player.x = 202;
         player.y = 375;
     }
@@ -80,13 +80,15 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const bug1 = new Enemy(-100, 55, 3);
-const bug2 = new Enemy(-100, 135, 2);
-const bug3 = new Enemy(-100, 215, 3);
-const bug4 = new Enemy(-100, 135, 4);
-const bug5 = new Enemy(-100, 55, 5);
+const bug1 = new Enemy(-400, 55, 3);
+const bug2 = new Enemy(-150, 55, 6);
+const bug3 = new Enemy(-220, 55, 5);
+const bug4 = new Enemy(-300, 135, 4);
+const bug5 = new Enemy(-200, 135, 2);
+const bug6 = new Enemy(-220, 215, 3.7);
+const bug7 = new Enemy(-150, 215, 3);
 
-const allEnemies = [bug1, bug2, bug3, bug4, bug5];
+const allEnemies = [bug1, bug2, bug3, bug4, bug5, bug6, bug7];
 
 const player =  new Player(202, 375);
 
