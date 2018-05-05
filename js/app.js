@@ -54,7 +54,11 @@ class Player {
   }
 
   update(dt) {
-    //add update method
+    if (player.y == -25) {
+      setTimeout(function() {
+        player.x = 202;
+        player.y = 375;
+      }, 400)}
   }
 
   render() {
@@ -88,7 +92,7 @@ const bug5 = new Enemy(-200, 135, 150);
 const bug6 = new Enemy(-220, 215, 280);
 const bug7 = new Enemy(-150, 215, 120);
 
-const allEnemies = [bug1, bug2, bug3, bug4, bug5, bug6, bug7];
+const allEnemies = [bug1, bug2]//, bug3, bug4, bug5, bug6, bug7];
 
 const player =  new Player(202, 375);
 
