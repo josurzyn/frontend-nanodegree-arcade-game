@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    font-size: 16pt;
+}
+
+h2 {
+  padding: 60px 0 0 0;
+}
+
+.container {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    text-align: left;
+}
+
+.score {
+    padding: 0 40px 0 10px;
+    width: 120px;
+}
