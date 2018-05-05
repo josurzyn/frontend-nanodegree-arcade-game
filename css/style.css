@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-    display: flex;
+    display: inline-block;
     height: 100%;
     vertical-align: top;
     align-items: center;
@@ -13,11 +13,10 @@ body {
 }
 
 .score {
-    display: inline-flex;
     align-self: flex-start;
     text-align: left;
     padding: 60px 40px 0 10px;
-    width: 25%;
+    width: 100px;
 }
 
 canvas {
