@@ -45,6 +45,7 @@ class Player {
 
   update(dt) {
     // Reset player on win
+    collectItem();
     if (player.y == -25) {
       //setTimeout(function() {
         player.x = 202;
@@ -120,6 +121,7 @@ function collision() {
         })
         allEnemies = [bug1, bug2];
         runs = 0;
+        allSpecialItems = [];
     }
   })
 }
@@ -145,32 +147,35 @@ function win() {
   }
   if (runs == 2){
     allEnemies.push(bug4);
-    blueGem.x = 101;
-    blueGem.y = 135;
+    allSpecialItems.push(blueGem);
   }
   if (runs == 3){
     allEnemies.push(bug5);
   }
   if (runs == 4){
     allEnemies.push(bug6);
+    allSpecialItems.push(greenGem);
   }
   if (runs == 5){
     allEnemies.push(bug7);
   }
   if (runs == 6){
     allEnemies.push(bug8);
+    allSpecialItems.push(orangeGem);
   }
   if (runs == 7){
     allEnemies.push(bug8);
   }
   if (runs == 8){
     allEnemies.push(bug8);
+    allSpecialItems.push(goldKey);
   }
   if (runs == 9){
     allEnemies.push(bug9);
   }
   if (runs == 10){
       allEnemies.push(bug10);
+      allSpecialItems.push(star);
     }
 }
 
@@ -188,10 +193,20 @@ class SpecialItem {
   }
 }
 
-const blueGem = new SpecialItem('images/Gem-Blue.png', -100, -100, 200);
-const greenGem = new SpecialItem('images/Gem-Green.png', -100, -100, 400);
-const orangeGem = new SpecialItem('images/Gem-Orange.png', -100, -100, 600);
-const goldKey = new SpecialItem('images/Key.png', -100, -100, 1000);
-const star = new SpecialItem('images/Star.png', -100, -100, 5000);
+const blueGem = new SpecialItem('images/Gem-Blue.png', 101, 215, 200);
+const greenGem = new SpecialItem('images/Gem-Green.png', 404, 55, 400);
+const orangeGem = new SpecialItem('images/Gem-Orange.png', 202, 135, 600);
+const goldKey = new SpecialItem('images/Key.png', 404, 215, 1000);
+const star = new SpecialItem('images/Star.png', 0, 55, 5000);
 
 let allSpecialItems = [];
+
+function collectItem(){
+  allSpecialItems.forEach(function(item){
+    if (player.x == item.x && player.y == item.y){
+      score += item.value;
+      displayScore.innerText = 'Score: ' + score;
+      allSpecialItems.pop();
+    }
+  })
+}
