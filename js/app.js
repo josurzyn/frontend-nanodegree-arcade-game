@@ -189,3 +189,9 @@ class SpecialItem {
 }
 
 const blueGem = new SpecialItem('images/Gem-Blue.png', -100, -100, 200);
+const greenGem = new SpecialItem('images/Gem-Green.png', -100, -100, 400);
+const orangeGem = new SpecialItem('images/Gem-Orange.png', -100, -100, 600);
+const goldKey = new SpecialItem('images/Key.png', -100, -100, 1000);
+const star = new SpecialItem('images/Star.png', -100, -100, 5000);
+
+let allSpecialItems = [];
