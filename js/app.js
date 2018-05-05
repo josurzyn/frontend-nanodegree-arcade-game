@@ -112,6 +112,7 @@ function collision() {
     if (player.y == bug.y && bug.x > (player.x - 50) && bug.x < (player.x + 50)) {
         player.x = 202;
         player.y = 375;
+        updateScores();
         score = 0;
         displayScore.innerText = 'Score: ' + score;
         let speedIncrease = runs * 10;
@@ -127,11 +128,23 @@ function collision() {
 }
 
 // Add score to game
-// Variable to access Score
+// Variables to access Scores
 let displayScore = document.querySelector('.score');
 let score = 0;
 let runs = 0;
 displayScore.innerText = 'Score: ' + score;
+let lastScore = document.querySelector('.last-score');
+let displayBestScore = document.querySelector('.best-score');
+let bestScore = 0;
+
+// Hold top score for session
+function updateScores() {
+  lastScore.innerText = 'Last score: ' + score;
+  if (score > bestScore) {
+    bestScore = score;
+    displayBestScore.innerText = 'Best Score: ' + bestScore;
+  }
+}
 
 // Update score on player win and increase difficulty
 function win() {
