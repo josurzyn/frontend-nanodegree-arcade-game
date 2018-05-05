@@ -147,11 +147,12 @@ function updateScores() {
 }
 
 // Update score on player win and increase difficulty
+// Adds special items based on number of successful runs
 function win() {
   score += 1000;
   displayScore.innerText = 'Score: ' + score;
   runs += 1;
-  //speed up bugs
+  //speed up bugs and add special items
   allEnemies.forEach(function(bug){
     bug.speed += 10;
   });
@@ -192,7 +193,7 @@ function win() {
     }
 }
 
-// Add Gem class
+// Add class for special collectible items
 class SpecialItem {
   constructor(sprite, x, y, value) {
     this.sprite = sprite;
@@ -206,6 +207,8 @@ class SpecialItem {
   }
 }
 
+// Instantiate special items
+// Add special items to array
 const blueGem = new SpecialItem('images/Gem-Blue.png', 101, 215, 200);
 const greenGem = new SpecialItem('images/Gem-Green.png', 404, 55, 400);
 const orangeGem = new SpecialItem('images/Gem-Orange.png', 202, 135, 600);
@@ -214,6 +217,7 @@ const star = new SpecialItem('images/Star.png', 0, 55, 5000);
 
 let allSpecialItems = [];
 
+// Collect special item - add points and remove from board
 function collectItem(){
   allSpecialItems.forEach(function(item){
     if (player.x == item.x && player.y == item.y){
