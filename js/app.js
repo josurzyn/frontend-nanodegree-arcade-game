@@ -26,6 +26,7 @@ Enemy.prototype.update = function(dt) {
     collision();
 };
 
+// Handles player/enemy collisions
 function collision() {
   allEnemies.forEach(function(bug){
     if (player.y == bug.y && bug.x > (player.x - 50) && bug.x < (player.x + 50)) {
@@ -54,6 +55,7 @@ class Player {
   }
 
   update(dt) {
+    // Reset player on win
     if (player.y == -25) {
       setTimeout(function() {
         player.x = 202;
@@ -83,8 +85,7 @@ class Player {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-const bug1 = new Enemy(-400, 55, 100);
+const bug1 = new Enemy(-400, 55, 100)
 const bug2 = new Enemy(-150, 55, 300);
 const bug3 = new Enemy(-220, 55, 450);
 const bug4 = new Enemy(-300, 135, 250);
@@ -94,6 +95,7 @@ const bug7 = new Enemy(-150, 215, 120);
 
 const allEnemies = [bug1, bug2]//, bug3, bug4, bug5, bug6, bug7];
 
+// Place the player object in a variable called player
 const player =  new Player(202, 375);
 
 // This listens for key presses and sends the keys to your
