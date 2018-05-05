@@ -77,10 +77,10 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const bug1 = new Enemy(-150, 215, 100)
-const bug2 = new Enemy(-400, 55, 150);
-const bug3 = new Enemy(-220, 135, 175);
+const bug2 = new Enemy(-200, 55, 150);
+const bug3 = new Enemy(-320, 135, 175);
 const bug4 = new Enemy(-300, 55, 50);
-const bug5 = new Enemy(-100, 135, 170);
+const bug5 = new Enemy(-100, 135, 120);
 const bug6 = new Enemy(-220, 215, 280);
 const bug7 = new Enemy(-150, 215, 120);
 const bug8 = new Enemy(-150, 55, 120);
@@ -111,12 +111,15 @@ function collision() {
     if (player.y == bug.y && bug.x > (player.x - 50) && bug.x < (player.x + 50)) {
         player.x = 202;
         player.y = 375;
-        runs = 0;
         score = 0;
         displayScore.innerText = 'Score: ' + score;
-        bug1.speed = 100;
-        bug2.speed = 150;
+        let speedIncrease = runs * 10;
+        allEnemies.forEach(function(bug) {
+          bug.speed -= speedIncrease;
+          bug.x = -100;
+        })
         allEnemies = [bug1, bug2];
+        runs = 0;
     }
   })
 }
@@ -135,31 +138,36 @@ function win() {
   runs += 1;
   //speed up bugs
   allEnemies.forEach(function(bug){
-    bug.speed += 5;
+    bug.speed += 10;
   });
-  if (runs == 2){
+  if (runs == 1){
     allEnemies.push(bug3);
   }
-  if (runs == 4){
+  if (runs == 2){
     allEnemies.push(bug4);
   }
-  if (runs == 7){
+  if (runs == 3){
     allEnemies.push(bug5);
   }
-  if (runs == 10){
+  if (runs == 4){
     allEnemies.push(bug6);
   }
-  if (runs == 13){
+  if (runs == 5){
     allEnemies.push(bug7);
   }
-  if (runs == 16){
+  if (runs == 6){
     allEnemies.push(bug8);
   }
-  if (runs == 19){
+  if (runs == 7){
     allEnemies.push(bug8);
   }
-  if (runs == 22){
+  if (runs == 8){
     allEnemies.push(bug8);
   }
-
+  if (runs == 9){
+    allEnemies.push(bug9);
+  }
+  if (runs == 10){
+      allEnemies.push(bug10);
+    }
 }
