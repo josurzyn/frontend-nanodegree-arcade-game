@@ -26,17 +26,6 @@ Enemy.prototype.update = function(dt) {
     collision();
 };
 
-// Handles player/enemy collisions
-function collision() {
-  allEnemies.forEach(function(bug){
-    if (player.y == bug.y && bug.x > (player.x - 50) && bug.x < (player.x + 50)) {
-        player.x = 202;
-        player.y = 375;
-    }
-  })
-
-}
-
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -57,10 +46,12 @@ class Player {
   update(dt) {
     // Reset player on win
     if (player.y == -25) {
-      setTimeout(function() {
+      //setTimeout(function() {
         player.x = 202;
         player.y = 375;
-      }, 400)}
+      //}, 400)
+      win();
+    }
   }
 
   render() {
@@ -85,15 +76,18 @@ class Player {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const bug1 = new Enemy(-400, 55, 100)
-const bug2 = new Enemy(-150, 55, 300);
-const bug3 = new Enemy(-220, 55, 450);
-const bug4 = new Enemy(-300, 135, 250);
-const bug5 = new Enemy(-200, 135, 150);
+const bug1 = new Enemy(-150, 215, 100)
+const bug2 = new Enemy(-400, 55, 150);
+const bug3 = new Enemy(-220, 135, 175);
+const bug4 = new Enemy(-300, 55, 50);
+const bug5 = new Enemy(-100, 135, 170);
 const bug6 = new Enemy(-220, 215, 280);
 const bug7 = new Enemy(-150, 215, 120);
+const bug8 = new Enemy(-150, 55, 120);
+const bug9 = new Enemy(-150, 135, 200);
+const bug10 = new Enemy(-150, 215, 220);
 
-const allEnemies = [bug1, bug2]//, bug3, bug4, bug5, bug6, bug7];
+let allEnemies = [bug1, bug2];
 
 // Place the player object in a variable called player
 const player =  new Player(202, 375);
@@ -110,3 +104,62 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// Handles player/enemy collisions
+function collision() {
+  allEnemies.forEach(function(bug){
+    if (player.y == bug.y && bug.x > (player.x - 50) && bug.x < (player.x + 50)) {
+        player.x = 202;
+        player.y = 375;
+        runs = 0;
+        score = 0;
+        displayScore.innerText = 'Score: ' + score;
+        bug1.speed = 100;
+        bug2.speed = 150;
+        allEnemies = [bug1, bug2];
+    }
+  })
+}
+
+// Add score to game
+// Variable to access Score
+let displayScore = document.querySelector('.score');
+let score = 0;
+let runs = 0;
+displayScore.innerText = 'Score: ' + score;
+
+// Update score on player win and increase difficulty
+function win() {
+  score += 1000;
+  displayScore.innerText = 'Score: ' + score;
+  runs += 1;
+  //speed up bugs
+  allEnemies.forEach(function(bug){
+    bug.speed += 5;
+  });
+  if (runs == 2){
+    allEnemies.push(bug3);
+  }
+  if (runs == 4){
+    allEnemies.push(bug4);
+  }
+  if (runs == 7){
+    allEnemies.push(bug5);
+  }
+  if (runs == 10){
+    allEnemies.push(bug6);
+  }
+  if (runs == 13){
+    allEnemies.push(bug7);
+  }
+  if (runs == 16){
+    allEnemies.push(bug8);
+  }
+  if (runs == 19){
+    allEnemies.push(bug8);
+  }
+  if (runs == 22){
+    allEnemies.push(bug8);
+  }
+
+}
