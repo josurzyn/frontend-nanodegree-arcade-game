@@ -1,7 +1,7 @@
 body {
     text-align: center;
     font-family: 'Indie Flower', cursive;
-    font-size: 14pt;
+    font-size: 16pt;
 }
 
 .container {
@@ -16,7 +16,7 @@ body {
     align-self: flex-start;
     text-align: left;
     padding: 60px 40px 0 10px;
-    width: 100px;
+    width: 120px;
 }
 
 canvas {
