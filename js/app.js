@@ -145,6 +145,8 @@ function win() {
   }
   if (runs == 2){
     allEnemies.push(bug4);
+    blueGem.x = 101;
+    blueGem.y = 135;
   }
   if (runs == 3){
     allEnemies.push(bug5);
@@ -171,3 +173,19 @@ function win() {
       allEnemies.push(bug10);
     }
 }
+
+// Add Gem class
+class SpecialItem {
+  constructor(sprite, x, y, value) {
+    this.sprite = sprite;
+    this.x = x;
+    this.y = y;
+    this.value = value;
+  }
+
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+}
+
+const blueGem = new SpecialItem('images/Gem-Blue.png', -100, -100, 200);
